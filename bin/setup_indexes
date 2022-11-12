@@ -1,0 +1,7 @@
+#!/usr/bin/env ruby
+
+require 'register_ingester_sk/config/settings'
+
+require 'register_sources_sk/services/es_index_creator'
+
+RegisterSourcesSk::Services::EsIndexCreator.new.create_index

@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+
+require 'register_ingester_sk/apps/ingester'
+
+RegisterIngesterSk::Apps::Ingester.bash_call ARGV
