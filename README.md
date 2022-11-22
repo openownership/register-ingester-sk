@@ -1,6 +1,6 @@
-# Register Ingester DK
+# Register Ingester SK
 
-Register Ingester DK is an application designed for use with beneficial ownership data from Denmark's Central Business Register published by the Danish Business Authority.
+Register Ingester SK is an application designed for use with beneficial ownership data from the Public Sector Partners Register collected by the Ministry of Justice of the Slovak Republic.
 
 ## One-time Setup
 
