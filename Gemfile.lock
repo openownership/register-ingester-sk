@@ -18,7 +18,7 @@ GIT
 
 GIT
   remote: git@github.com:openownership/register-sources-sk.git
-  revision: 4f3464e0ff8dcc31006d909d8397463d366f4961
+  revision: 230b22980a680328559d3c45f3124c48691775bb
   specs:
     register_sources_sk (0.1.0)
       activesupport (>= 6, < 8)
