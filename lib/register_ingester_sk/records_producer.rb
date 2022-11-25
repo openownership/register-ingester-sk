@@ -7,9 +7,10 @@ require 'active_support/core_ext/string'
 
 module RegisterIngesterSk
   class RecordsProducer
-    def initialize(stream_name: nil, kinesis_adapter: nil, buffer_size: nil, serializer: nil)
+    def initialize(stream_name: nil, kinesis_adapter: nil, s3_adapter: nil, buffer_size: nil, serializer: nil)
       stream_name ||= ENV['SK_STREAM']
       kinesis_adapter ||= RegisterIngesterSk::Config::Adapters::KINESIS_ADAPTER
+      s3_adapter ||= RegisterIngesterDk::Config::Adapters::S3_ADAPTER
       buffer_size ||= 50
       serializer ||= RecordSerializer.new
 
@@ -17,7 +18,10 @@ module RegisterIngesterSk
         stream_name: stream_name,
         kinesis_adapter: kinesis_adapter,
         buffer_size: buffer_size,
-        serializer: serializer
+        serializer: serializer,
+        s3_adapter: s3_adapter,
+        s3_prefix: 'large-sk',
+        s3_bucket: ENV['BODS_S3_BUCKET_NAME'],
       ) : nil
     end
 

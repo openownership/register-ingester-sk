@@ -1,6 +1,6 @@
 GIT
   remote: git@github.com:openownership/register-common.git
-  revision: c124210c203b85157e1dd0cb58037a420fec4c0f
+  revision: 6bff775e342bbe5f14090e4a7e2e13d42e1fc836
   specs:
     register_common (0.1.0)
       activesupport (>= 6, < 8)
@@ -15,6 +15,7 @@ GIT
       nokogiri
       redis (>= 3)
       rubyzip (>= 2, < 3)
+      xxhash
 
 GIT
   remote: git@github.com:openownership/register-sources-sk.git
@@ -50,11 +51,11 @@ GEM
     addressable (2.8.1)
       public_suffix (>= 2.0.2, < 6.0)
     aws-eventstream (1.2.0)
-    aws-partitions (1.660.0)
+    aws-partitions (1.665.0)
     aws-sdk-athena (1.58.0)
       aws-sdk-core (~> 3, >= 3.165.0)
       aws-sigv4 (~> 1.1)
-    aws-sdk-core (3.167.0)
+    aws-sdk-core (3.168.1)
       aws-eventstream (~> 1, >= 1.0.2)
       aws-partitions (~> 1, >= 1.651.0)
       aws-sigv4 (~> 1.5)
@@ -154,7 +155,7 @@ GEM
     racc (1.6.0)
     redis (5.0.5)
       redis-client (>= 0.9.0)
-    redis-client (0.11.1)
+    redis-client (0.11.2)
       connection_pool
     rexml (3.2.5)
     rspec (3.12.0)
