@@ -1,6 +1,6 @@
 # Register Ingester SK
 
-Register Ingester SK is an application designed for use with beneficial ownership data from Register published by Slovakia.
+Register Ingester SK is an application designed for use with beneficial ownership data from the Public Sector Partners Register collected by the Ministry of Justice of the Slovak Republic.
 
 ## One-time Setup
 
