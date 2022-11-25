@@ -1,6 +1,6 @@
-# Register Ingester DK
+# Register Ingester SK
 
-Register Ingester DK is an application designed for use with beneficial ownership data from Denmark's Central Business Register published by the Danish Business Authority.
+Register Ingester SK is an application designed for use with beneficial ownership data from Register published by Slovakia.
 
 ## One-time Setup
 
@@ -15,10 +15,9 @@ bin/run setup_indexes
 
 ```
 bin/run ingest
-bin/run ingest
 ```
 
-If the DK_STREAM key is set, new records will also be published to the AWS Kinesis Stream.
+If the SK_STREAM key is set, new records will also be published to the AWS Kinesis Stream.
 
 ## Testing
 
@@ -44,12 +43,8 @@ ELASTICSEARCH_PROTOCOL=https
 ELASTICSEARCH_SSL_VERIFY=true
 ELASTICSEARCH_PASSWORD=
 
-DK_CVR_USERNAME=
-DK_CVR_PASSWORD=
-DK_STREAM=
+SK_STREAM=
 ```
 
 - Elasticsearch credentials - these must be set
-- DK_CVR_USERNAME - This is username for the DK Elasticsearch source
-- DK_CVR_PASSWORD - This is username for the DK Elasticsearch source
-- DK_STREAM - If this is set, newly discovered records (ie ones not previously ingested) will be published to the AWS Kinesis stream with this name
+- SK_STREAM - If this is set, newly discovered records (ie ones not previously ingested) will be published to the AWS Kinesis stream with this name
