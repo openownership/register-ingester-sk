@@ -10,7 +10,7 @@ module RegisterIngesterSk
     def initialize(stream_name: nil, kinesis_adapter: nil, s3_adapter: nil, buffer_size: nil, serializer: nil)
       stream_name ||= ENV['SK_STREAM']
       kinesis_adapter ||= RegisterIngesterSk::Config::Adapters::KINESIS_ADAPTER
-      s3_adapter ||= RegisterIngesterDk::Config::Adapters::S3_ADAPTER
+      s3_adapter ||= RegisterIngesterSk::Config::Adapters::S3_ADAPTER
       buffer_size ||= 50
       serializer ||= RecordSerializer.new
 
