@@ -2,6 +2,6 @@
 
 RSpec.describe RegisterIngesterSk do
   it "has a version number" do
-    expect(RegisterIngesterSk::VERSION).not_to be nil
+    expect(RegisterIngesterSk::VERSION).not_to be_nil
   end
 end

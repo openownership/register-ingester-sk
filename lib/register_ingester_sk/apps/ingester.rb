@@ -10,7 +10,7 @@ module RegisterIngesterSk
     class Ingester
       CHUNK_SIZE = 50
 
-      def self.bash_call(args)
+      def self.bash_call(_args)
         Ingester.new.call
       end
 

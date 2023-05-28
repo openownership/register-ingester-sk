@@ -2,10 +2,10 @@ require 'json'
 require 'register_ingester_sk/apps/ingester'
 
 RSpec.describe RegisterIngesterSk::Apps::Ingester do
-  subject { described_class.new(records_handler: records_handler, sk_client: sk_client) }
+  subject { described_class.new(records_handler:, sk_client:) }
 
-  let(:records_handler) { double 'records_handler'}
-  let(:sk_client) { double 'sk_client'}
+  let(:records_handler) { double 'records_handler' }
+  let(:sk_client) { double 'sk_client' }
 
   let(:records) do
     [JSON.parse(File.read('./spec/fixtures/sk_bo_data.json'))]
@@ -13,7 +13,7 @@ RSpec.describe RegisterIngesterSk::Apps::Ingester do
 
   before do
     expect(sk_client).to receive(:all_records).and_return(
-      records
+      records,
     )
   end
 
