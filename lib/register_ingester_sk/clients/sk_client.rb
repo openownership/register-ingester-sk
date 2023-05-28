@@ -4,14 +4,14 @@ require 'json'
 module RegisterIngesterSk
   module Clients
     class SkClient
-      API_URL = 'https://rpvs.gov.sk/OpenData/Partneri'
+      API_URL = 'https://rpvs.gov.sk/OpenData/Partneri'.freeze
 
       # The api uses OData, which defines it's own system of url params that allow
       # you to (amongst other things) request that records are 'expanded', i.e.
       # eagerly fetched and nested in the results.
       # This parameter 'expands' Partneri and Konecni, the company and people
-      # records for each result, expanding all their sub-properties in turn.  
-      RECORD_EXPANSION_PARAM = '$expand=PartneriVerejnehoSektora($expand=*),KonecniUzivateliaVyhod($expand=*)'
+      # records for each result, expanding all their sub-properties in turn.
+      RECORD_EXPANSION_PARAM = '$expand=PartneriVerejnehoSektora($expand=*),KonecniUzivateliaVyhod($expand=*)'.freeze
 
       def initialize(api_url: nil, record_expansion_param: nil, error_adapter: nil)
         @api_url = api_url || API_URL
@@ -48,7 +48,7 @@ module RegisterIngesterSk
         response = http.request(URI(uri))
 
         unless response.is_a?(Net::HTTPSuccess)
-          error_adapter && error_adapter.error("#{response.code} received when importing sk data")
+          error_adapter&.error("#{response.code} received when importing sk data")
           return nil
         end
 
