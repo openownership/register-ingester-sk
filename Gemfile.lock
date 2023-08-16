@@ -1,5 +1,5 @@
 GIT
-  remote: git@github.com:openownership/register-common.git
+  remote: https://github.com/openownership/register-common.git
   revision: 99abf2db3884d2d8106026262c1750a1b1d6c2b9
   specs:
     register_common (0.1.0)
@@ -18,7 +18,7 @@ GIT
       xxhash
 
 GIT
-  remote: git@github.com:openownership/register-sources-sk.git
+  remote: https://github.com/openownership/register-sources-sk.git
   revision: 0eec7202df6ea0bd6c9e462d5f15fb99d6034461
   specs:
     register_sources_sk (0.1.0)
