@@ -1,8 +1,9 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
-require 'register_ingester_sk/config/settings'
+require 'bundler/setup'
 
+require 'register_ingester_sk/config/settings'
 require 'register_sources_sk/services/es_index_creator'
 
 RegisterSourcesSk::Services::EsIndexCreator.new.create_index
