@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'register_ingester_sk/clients/sk_client'
 
 RSpec.describe RegisterIngesterSk::Clients::SkClient do
@@ -15,11 +17,11 @@ RSpec.describe RegisterIngesterSk::Clients::SkClient do
 
     it 'fetches all the data from the api and yields each record' do
       initial_request = stub_request(:get, url).with(query:).to_return(body: File.read('spec/fixtures/sk_bo_data.json'))
-      second_request = stub_request(:get, url).with(query: "#{query}&$skip=20").to_return(body: File.read('spec/fixtures/sk_bo_data_end.json'))
+      second_request = stub_request(:get, url)
+                       .with(query: "#{query}&$skip=20")
+                       .to_return(body: File.read('spec/fixtures/sk_bo_data_end.json'))
 
-      subject.each do |record|
-        expect(record).to be_a(Hash)
-      end
+      expect(subject).to all(be_a(Hash))
       expect(initial_request).to have_been_requested
       expect(second_request).to have_been_requested
     end
@@ -30,7 +32,7 @@ RSpec.describe RegisterIngesterSk::Clients::SkClient do
       end
 
       it 'logs the error' do
-        expect(error_adapter).to receive(:error).with("500 received when importing sk data")
+        expect(error_adapter).to receive(:error).with('500 received when importing sk data')
         subject.to_a
       end
     end
@@ -55,7 +57,7 @@ RSpec.describe RegisterIngesterSk::Clients::SkClient do
       end
 
       it 'logs the error' do
-        expect(error_adapter).to receive(:error).with("500 received when importing sk data")
+        expect(error_adapter).to receive(:error).with('500 received when importing sk data')
         subject
       end
     end

@@ -1,17 +1,19 @@
+# frozen_string_literal: true
+
 require 'net/http/persistent'
 require 'json'
 
 module RegisterIngesterSk
   module Clients
     class SkClient
-      API_URL = 'https://rpvs.gov.sk/OpenData/Partneri'.freeze
+      API_URL = 'https://rpvs.gov.sk/OpenData/Partneri'
 
       # The api uses OData, which defines it's own system of url params that allow
       # you to (amongst other things) request that records are 'expanded', i.e.
       # eagerly fetched and nested in the results.
       # This parameter 'expands' Partneri and Konecni, the company and people
       # records for each result, expanding all their sub-properties in turn.
-      RECORD_EXPANSION_PARAM = '$expand=PartneriVerejnehoSektora($expand=*),KonecniUzivateliaVyhod($expand=*)'.freeze
+      RECORD_EXPANSION_PARAM = '$expand=PartneriVerejnehoSektora($expand=*),KonecniUzivateliaVyhod($expand=*)'
 
       def initialize(api_url: nil, record_expansion_param: nil, error_adapter: nil)
         @api_url = api_url || API_URL
