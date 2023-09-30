@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'register_ingester_sk/config/settings'
 require 'register_ingester_sk/config/adapters'
 
