@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-require 'register_ingester_sk/config/settings'
-require 'register_ingester_sk/config/adapters'
-require 'register_ingester_sk/record_serializer'
+require 'active_support/core_ext/string'
 require 'register_common/services/publisher'
 
-require 'active_support/core_ext/string'
+require_relative 'config/adapters'
+require_relative 'config/settings'
+require_relative 'record_serializer'
 
 module RegisterIngesterSk
   class RecordsProducer
