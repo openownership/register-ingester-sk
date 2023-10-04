@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require 'net/http/persistent'
 require 'json'
+require 'net/http/persistent'
 
 module RegisterIngesterSk
   module Clients

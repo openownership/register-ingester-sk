@@ -1,9 +1,10 @@
 # frozen_string_literal: true
 
-require 'register_ingester_sk/config/settings'
 require 'register_sources_sk/config/elasticsearch'
 require 'register_sources_sk/repositories/record_repository'
-require 'register_ingester_sk/records_producer'
+
+require_relative 'config/settings'
+require_relative 'records_producer'
 
 module RegisterIngesterSk
   class RecordsHandler

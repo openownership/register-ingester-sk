@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-require 'register_ingester_sk/config/settings'
-require 'register_ingester_sk/config/adapters'
-
-require 'register_ingester_sk/clients/sk_client'
 require 'register_sources_sk/structs/record'
-require 'register_ingester_sk/records_handler'
+
+require_relative '../clients/sk_client'
+require_relative '../config/adapters'
+require_relative '../config/settings'
+require_relative '../records_handler'
 
 module RegisterIngesterSk
   module Apps
