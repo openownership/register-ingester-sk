@@ -1,50 +1,37 @@
 # Register Ingester SK
 
-Register Ingester SK is an application designed for use with beneficial ownership data from the Public Sector Partners Register collected by the Ministry of Justice of the Slovak Republic.
+Register Ingester SK is a data ingester for the [OpenOwnership](https://www.openownership.org/en/) [Register](https://github.com/openownership/register) project. It processes bulk data published in the Public Sector Partners Register collected by the Ministry of Justice in Slovakia, and ingests records into [Elasticsearch](https://www.elastic.co/elasticsearch/). Optionally, it can also publish new records to [AWS Kinesis](https://aws.amazon.com/kinesis/). It uses raw records only, and doesn't do any conversion into the [Beneficial Ownership Data Standard (BODS)](https://www.openownership.org/en/topics/beneficial-ownership-data-standard/) format.
 
-## One-time Setup
+## Installation
 
-Ingest indexes:
-```
-bin/run create-indexes
-```
+Install and boot [Register](https://github.com/openownership/register).
 
-## Ingesting Snapshots
+Configure your environment using the example file:
 
-### 1. Ingest
-
-```
-bin/run ingest
+```sh
+cp .env.example .env
 ```
 
-If the SK_STREAM key is set, new records will also be published to the AWS Kinesis Stream.
+- `SK_STREAM`: AWS Kinesis stream to which to publish new records (optional)
+
+Create the Elasticsearch indexes:
+
+```sh
+docker compose run ingester-sk create-indexes
+```
 
 ## Testing
 
-First build the docker image with:
-```
-bin/build
-```
-Then tests can be executed by running:
-```
-bin/test
+Run the tests:
+
+```sh
+docker compose run ingester-sk test
 ```
 
-## Configuration
+## Usage
 
+To ingest records:
+
+```sh
+docker compose run ingester-sk ingest
 ```
-BODS_AWS_REGION=
-BODS_AWS_ACCESS_KEY_ID=
-BODS_AWS_SECRET_ACCESS_KEY=
-
-ELASTICSEARCH_HOST=
-ELASTICSEARCH_PORT=443
-ELASTICSEARCH_PROTOCOL=https
-ELASTICSEARCH_SSL_VERIFY=true
-ELASTICSEARCH_PASSWORD=
-
-SK_STREAM=
-```
-
-- Elasticsearch credentials - these must be set
-- SK_STREAM - If this is set, newly discovered records (ie ones not previously ingested) will be published to the AWS Kinesis stream with this name
