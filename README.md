@@ -30,8 +30,8 @@ docker compose run ingester-sk test
 
 ## Usage
 
-To ingest records:
+To ingest the bulk data:
 
 ```sh
-docker compose run ingester-sk ingest
+docker compose run ingester-sk ingest-bulk
 ```
