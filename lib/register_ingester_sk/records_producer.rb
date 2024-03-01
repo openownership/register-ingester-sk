@@ -10,7 +10,6 @@ require_relative 'record_serializer'
 module RegisterIngesterSk
   class RecordsProducer
     def initialize(stream_name: nil, kinesis_adapter: nil, s3_adapter: nil, buffer_size: nil, serializer: nil)
-      stream_name ||= ENV.fetch('SK_STREAM', nil)
       kinesis_adapter ||= RegisterIngesterSk::Config::Adapters::KINESIS_ADAPTER
       s3_adapter ||= RegisterIngesterSk::Config::Adapters::S3_ADAPTER
       buffer_size ||= 50
