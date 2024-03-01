@@ -12,7 +12,7 @@ module RegisterIngesterSk
       @repository = repository || RegisterSourcesSk::Repositories::RecordRepository.new(
         client: RegisterSourcesSk::Config::ELASTICSEARCH_CLIENT
       )
-      @producer = producer || RecordsProducer.new
+      @producer = producer || RecordsProducer.new(stream_name: ENV.fetch('SK_STREAM', nil))
     end
 
     def handle_records(records)
