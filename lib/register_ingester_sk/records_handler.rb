@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'register_sources_sk/config/elasticsearch'
-require 'register_sources_sk/repositories/record_repository'
+require 'register_sources_sk/repository'
 
 require_relative 'config/settings'
 require_relative 'records_producer'
@@ -9,8 +9,9 @@ require_relative 'records_producer'
 module RegisterIngesterSk
   class RecordsHandler
     def initialize(repository: nil, producer: nil)
-      @repository = repository || RegisterSourcesSk::Repositories::RecordRepository.new(
-        client: RegisterSourcesSk::Config::ELASTICSEARCH_CLIENT
+      @repository = repository || RegisterSourcesSk::Repository.new(
+        client: RegisterSourcesSk::Config::ELASTICSEARCH_CLIENT,
+        index: RegisterSourcesSk::Config::ELASTICSEARCH_INDEX
       )
       @producer = producer || RecordsProducer.new(stream_name: ENV.fetch('SK_STREAM', nil))
     end
