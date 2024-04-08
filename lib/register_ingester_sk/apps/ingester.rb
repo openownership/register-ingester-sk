@@ -22,8 +22,13 @@ module RegisterIngesterSk
       end
 
       def call
+        n = 0
         sk_client.all_records.lazy.each_slice(CHUNK_SIZE) do |records|
-          records = records.map { |record| RegisterSourcesSk::Record[record] }.compact
+          n += records.count
+          puts "[#{Time.now}] " + format('%9s', n)
+          records = records.map do |record|
+            RegisterSourcesSk::Record[record]
+          end.compact
 
           next if records.empty?
 
